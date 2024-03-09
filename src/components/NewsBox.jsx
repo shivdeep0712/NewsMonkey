@@ -4,8 +4,8 @@ const NewsBox = (props) => {
   const [jsonNewsData,setJsonNewsData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      
-        const newsDataResponse = await fetch(`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&pageSize=${props.pageSize}&page=${props.page}&apiKey=7a095a27d3bc4318b52512c52aceac94`);
+      const apiKey = process.env.REACT_APP_NEWS_KEY;
+        const newsDataResponse = await fetch(`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&pageSize=${props.pageSize}&page=${props.page}&apiKey=${apiKey}`);
        
         const jsonNewsData = await newsDataResponse.json();
         setJsonNewsData(jsonNewsData.articles);
